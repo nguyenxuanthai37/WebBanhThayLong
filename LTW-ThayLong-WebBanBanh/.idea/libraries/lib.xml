@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://G:/2019/apache-tomcat-8.5.34/lib" />
+      <root url="jar://G:/2019/LTW-ThayLong/LibSQL/mysql-connector-java-8.0.13.jar!/" />
+      <root url="jar://G:/2019/LTW-ThayLong/LibSQL/sqljdbc42.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://G:/2019/apache-tomcat-8.5.34/lib" recursive="false" />
+  </library>
+</component>
