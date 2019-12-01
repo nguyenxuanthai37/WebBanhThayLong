@@ -1,14 +1,12 @@
 <%@ page import="vn.edu.hcmuaf.nlu.Model.Products" %>
-<%@ page import="vn.edu.hcmuaf.nlu.Servlet.Product.doProduct" %>
-<%@ page import="vn.edu.hcmuaf.nlu.DAO.ObjectDAO" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="vn.edu.hcmuaf.nlu.DAO.ProductDAO" %>
-<%@ page import="vn.edu.hcmuaf.nlu.Util.Util" %><%--
-  Created by IntelliJ IDEA.
-  User: MAD
-  Date: 11/18/2019
-  Time: 8:58 PM
-  To change this template use File | Settings | File Templates.
+<%@ page import="vn.edu.hcmuaf.nlu.Util.Util" %>
+Created by IntelliJ IDEA.
+User: MAD
+Date: 11/18/2019
+Time: 8:58 PM
+To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -24,18 +22,20 @@
     <div id="content">
         <div class="row">
             <div class="col-sm-9">
-<%--                <% if (session.getAttribute("AuthProduct") != null) {--%>
-<%--                    Products p = (Products) session.getAttribute("AuthProduct");--%>
-<%--                %>--%>
+                <%
+                    if (session.getAttribute("AuthProduct") != null) {
+                        Products products = (Products) request.getAttribute("AuthProduct");
+                %>
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="assets/dest/images/products/6.jpg" alt="">
+                        <img src="<%=products.getImage()%>" alt="">
                     </div>
                     <div class="col-sm-8">
                         <div class="single-item-body">
-                            <p class="single-item-title">Sample Woman Top</p>
+                            <p class="single-item-title"><%=products.getName()%>
+                            </p>
                             <p class="single-item-price">
-                                <span>$34.55</span>
+                                <span><%=products.getUnit_price()%></span>
                             </p>
                         </div>
 
@@ -43,10 +43,8 @@
                         <div class="space20">&nbsp;</div>
 
                         <div class="single-item-desc">
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo ms id
-                                quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-                                repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
-                                saepe.</p>
+                            <p><%=products.getDescription()%>
+                            </p>
                         </div>
                         <div class="space20">&nbsp;</div>
 
@@ -76,12 +74,12 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                             </select>
-                            <a class="add-to-cart" href="<%=Util.fullPath("Add?id=")%>"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="add-to-cart" href="<%=Util.fullPath("Add?id=")%>"><i
+                                    class="fa fa-shopping-cart"></i></a>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="space40">&nbsp;</div>
                 <div class="woocommerce-tabs">
                     <ul class="tabs">
@@ -103,7 +101,7 @@
                         <p>No Reviews</p>
                     </div>
                 </div>
-<%--                <%}%>--%>
+                <%}%>
                 <div class="space50">&nbsp;</div>
                 <div class="beta-products-list">
                     <% ProductDAO spDAO = new ProductDAO();

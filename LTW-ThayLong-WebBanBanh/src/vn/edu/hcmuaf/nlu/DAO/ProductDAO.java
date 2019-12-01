@@ -23,10 +23,6 @@ public class ProductDAO implements ObjectDAO {
         return getArrayList(sql);
     }
 
-    @Override
-    public Products getChiTietSP(String id_sp) {
-        return null;
-    }
 
     @Override
     public ArrayList<Products> getListSPByPage(ArrayList<Products> arr, int start, int end) {
@@ -58,19 +54,12 @@ public class ProductDAO implements ObjectDAO {
             while (rs.next()) {
                 Products products = new Products();
 
-                products.setId(rs.getInt("id"));
-                products.setName(rs.getString("name"));
-                products.setId_type(rs.getInt("id_type"));
-                products.setDescription(rs.getString("description"));
-                products.setUnit_price(rs.getInt("unit_price"));
-                products.setPromotion_price(rs.getInt("promotion_price"));
-                products.setImage(rs.getString("image"));
-                products.setQuantity(rs.getInt("quantity"));
-                products.setHot(rs.getInt("hot"));
+                Products.getProduct(products, rs);
 
                 listPH.add(products);
             }
             connection.close();
+            rs.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -100,15 +89,7 @@ public class ProductDAO implements ObjectDAO {
             while (rs.next()) {
                 Products products = new Products();
 
-                products.setId(rs.getInt("id"));
-                products.setName(rs.getString("name"));
-                products.setId_type(rs.getInt("id_type"));
-                products.setDescription(rs.getString("description"));
-                products.setUnit_price(rs.getInt("unit_price"));
-                products.setPromotion_price(rs.getInt("promotion_price"));
-                products.setImage(rs.getString("image"));
-                products.setQuantity(rs.getInt("quantity"));
-                products.setHot(rs.getInt("hot"));
+                Products.getProduct(products, rs);
 
                 listPH.add(products);
             }
@@ -124,18 +105,4 @@ public class ProductDAO implements ObjectDAO {
         return getProducts(sql, listP);
     }
 
-    public static boolean selectProduct(String id_product) throws SQLException, ClassNotFoundException {
-        String sql = "Select id from products";
-        Connection connection = DatabaseConnection.connect();
-        PreparedStatement pst = connection.prepareStatement(sql);
-        ResultSet rs = pst.executeQuery();
-        while (rs.next()) {
-            if (id_product.equals(rs.getString(1))) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
 }

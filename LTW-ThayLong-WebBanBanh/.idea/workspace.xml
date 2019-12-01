@@ -35,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="jsf" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -52,7 +52,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="G:/2019/LTW-ThayLong/BootstrapAdmin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -63,6 +63,7 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MAD\IdeaProjects\LTW-ThayLong-WebBanBanh\web" />
+      <recent name="C:\Users\MAD\IdeaProjects\LTW-ThayLong-WebBanBanh\web\assets\dest\images\thumbs" />
       <recent name="C:\Users\MAD\IdeaProjects\LTW-ThayLong-WebBanBanh\src" />
     </key>
   </component>
@@ -220,6 +221,9 @@
       <workItem from="1575007878982" duration="4664000" />
       <workItem from="1575076002474" duration="6252000" />
       <workItem from="1575082780646" duration="34934000" />
+      <workItem from="1575156124028" duration="2803000" />
+      <workItem from="1575162064150" duration="3679000" />
+      <workItem from="1575166070294" duration="8737000" />
     </task>
     <servers />
   </component>

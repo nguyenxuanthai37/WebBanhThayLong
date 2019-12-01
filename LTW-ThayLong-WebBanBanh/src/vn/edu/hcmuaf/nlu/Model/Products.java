@@ -3,6 +3,7 @@ package vn.edu.hcmuaf.nlu.Model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Products {
     int id;
@@ -32,27 +33,19 @@ public class Products {
     }
 
     public static Products find(int id) {
-        String sql = "Select * from products where id='" + id + "'";
-        Connection connection;
-        PreparedStatement pst = null;
-        ResultSet rs = null;
+        Products products = null;
         try {
-            connection = DatabaseConnection.connect();
-            pst = connection.prepareStatement(sql);
-            rs = pst.executeQuery();
-            if (rs.next()) {
-                Products products = new Products();
-
-                products.setId(rs.getInt("id"));
-                products.setName(rs.getString("name"));
-                products.setId_type(rs.getInt("id_type"));
-                products.setDescription(rs.getString("description"));
-                products.setUnit_price(rs.getInt("unit_price"));
-                products.setPromotion_price(rs.getInt("promotion_price"));
-                products.setImage(rs.getString("image"));
-                products.setQuantity(rs.getInt("quantity"));
-                products.setHot(rs.getInt("hot"));
-
+            String sql = "SELECT `id`, `name`, `id_type`, `description`, `unit_price`, `promotion_price`, `image`, `unit`, `quantity`, " +
+                    "`hot`, `created_at`, `updated_at` FROM `products` WHERE id='" + id + "'";
+            Connection connection = DatabaseConnection.connect();
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            rs.last();
+            if (rs.getRow() == 1) {
+                rs.first();
+                products = new Products();
+                getProduct(products, rs);
                 return products;
             }
             connection.close();
@@ -60,7 +53,19 @@ public class Products {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-        return null;
+        return products;
+    }
+
+    public static void getProduct(Products products, ResultSet rs) throws SQLException {
+        products.setId(rs.getInt("id"));
+        products.setName(rs.getString("name"));
+        products.setId_type(rs.getInt("id_type"));
+        products.setDescription(rs.getString("description"));
+        products.setUnit_price(rs.getInt("unit_price"));
+        products.setPromotion_price(rs.getInt("promotion_price"));
+        products.setImage(rs.getString("image"));
+        products.setQuantity(rs.getInt("quantity"));
+        products.setHot(rs.getInt("hot"));
     }
 
 

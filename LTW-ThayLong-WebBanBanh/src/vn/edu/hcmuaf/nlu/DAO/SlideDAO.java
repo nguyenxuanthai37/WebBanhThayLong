@@ -19,16 +19,13 @@ public class SlideDAO {
             connection = DatabaseConnection.connect();
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            rs.last();
-            if (rs.getRow()==1) {
-                rs.first();
+          while(rs.next()){
                 Slide sl = new Slide();
                 sl.setId(rs.getInt("id"));
                 sl.setLink(rs.getString("link"));
                 sl.setImage(rs.getString("image"));
 
                 listSL.add(sl);
-                connection.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,23 +33,3 @@ public class SlideDAO {
         return listSL;
     }
 }
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        try {
-//            String inEmail = request.getParameter("email").trim();
-//            String inPassword = request.getParameter("pass").trim();
-//
-//            if (checkLogin(inEmail, inPassword)) {
-//                HttpSession session = request.getSession();
-//                Users u = new Users();
-//                //
-//                session.setAttribute("Auth", u);
-//                response.sendRedirect("index.jsp");
-//            } else {
-//                request.setAttribute("err", "Sai Email hoặc Password");
-//                request.getRequestDispatcher("login.jsp").forward(request, response);
-//            }
-//        } catch (SQLException | ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//            response.getWriter().println("Đăng nhập không thành công!");
-//        }
-//    }
